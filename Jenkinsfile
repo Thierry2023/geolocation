@@ -1,7 +1,9 @@
-pipeline {
-    triggers {
-  pollSCM('* * * * *')
+properties([pipelineTriggers([githubPush()])])
+pipeline{
+    agent {
+        docker { image 'maven:3.8.6-eclipse-temurin-8-alpine' }
     }
+<<<<<<< HEAD
    agent any
     tools {
   maven 'M2_HOME'
@@ -47,7 +49,43 @@ environment {
             steps {
                 sh 'mvn clean'
                 sh 'mvn package -DskipTests'
+=======
+    tools {
+        maven 'maven3'
+    }
+    stages{
+        stage('mavin build'){
+            steps{
+                sh 'mvn clean install package'
             }
+
+        }
+        stage('upload artifact'){
+            steps{
+                script{
+                    def mavenPom = readMavenPom file: 'pom.xml'
+                    nexusArtifactUploader artifacts: 
+                    [[artifactId: "${mavenPom.artifactId}",
+                    classifier: '',
+                    file: "target/${mavenPom.artifactId}-${mavenPom.version}.${mavenPom.packaging}",
+                    type: "${mavenPom.packaging}"]],
+                    credentialsId: 'NexusID',
+                    groupId: "${mavenPom.groupId}",
+                     nexusUrl: '45.33.7.113:8081',
+                      nexusVersion: 'nexus3',
+                       protocol: 'http',
+                        repository: 'biom',
+                         version: "${mavenPom.version}" 
+                }
+            }
+
+        }
+        stage('list the dir'){
+            steps{
+                sh ' pwd'
+>>>>>>> e0bf4ad4c98f7215082391afc63ffb90c4ad8b70
+            }
+
         }
         stage('Build Image') {
             
