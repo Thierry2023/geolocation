@@ -10,6 +10,15 @@ pipeline{
             }
 
         }
+        stage("build & SonarQube analysis"){
+            agent any
+            steps{
+                withSonarQubeEnv('sonar'){
+                    sh 'mvn sonar:sonar'
+                }
+            }
+
+        }
         stage('upload artifact'){
             steps{
                 script{
