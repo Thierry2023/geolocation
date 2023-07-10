@@ -1,3 +1,4 @@
+
 pipeline{
     agent {
         docker {image 'maven:3.8.6-openjdk-11-slim'}     
@@ -7,7 +8,6 @@ pipeline{
     }
     stages{
         stage("build & SonarQube analysis"){
-            agent any
             steps{
                 withSonarQubeEnv('SonarServer'){
                     sh 'mvn sonar:sonar -Dsonar.projectKey=Thierry2023_geolocation2 -Dsonar.java.binaries=.'
