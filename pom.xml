@@ -11,7 +11,7 @@
 	<groupId>com.spring</groupId>
 	<artifactId>biom</artifactId>
 	<version>0.0.7-RELEASE</version>
-	<name>bioMedical</name>
+	<name>biom</name>
 	<description>Demo project for Spring Boot</description>
 	<packaging>jar</packaging>
 	<properties>
