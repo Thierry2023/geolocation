@@ -9,7 +9,7 @@ pipeline{
         stage("build & SonarQube analysis"){
             agent any
             steps{
-                withSonarQubeEnv('sonar'){
+                withSonarQubeEnv('SonarServer'){
                     sh 'mvn sonar:sonar -Dsonar.projectKey=Thierry2023_geolocation2 -Dsonar.java.binaries=.'
 
                 }
