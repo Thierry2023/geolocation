@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.spring</groupId>
-	<artifactId>bioMedical</artifactId>
-	<version>0.0.7-RELEASE</version>
-	<name>bioMedical</name>
+	<artifactId>geolocation</artifactId>
+	<version>0.0.8-RELEASE</version>
+	<name>geolocation</name>
 	<description>Demo project for Spring Boot</description>
 	<packaging>jar</packaging>
 	<properties>
