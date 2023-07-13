@@ -21,7 +21,7 @@ pipeline{
             }
 
         }
-        sstage('Check Quality Gate') {
+        stage('Check Quality Gate') {
             steps{
                 echo 'Checking quality gate...'
                 script {
